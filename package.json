@@ -1,0 +1,25 @@
+{
+  "name": "verdaccio-tgz-forwarder",
+  "version": "1.0.0",
+  "description": "Simple and fast fastify app to serve tarball's of your verdaccio packages by tags like latest",
+  "main": "dist/src/server.js",
+  "repository": "git@github.com:lostarkdiscord/verdaccio-tgz-forwarder.git",
+  "author": "zero734kr",
+  "license": "MIT",
+  "scripts": {
+    "test": "cross-env NODE_ENV=development ts-node src/server.ts",
+    "start": "cross-env NODE_ENV=production node ."
+  },
+  "dependencies": {
+    "fastify": "^3.11.0",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/node-fetch": "^2.5.8",
+    "@typescript-eslint/eslint-plugin": "^4.14.2",
+    "@typescript-eslint/parser": "^4.14.2",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.19.0"
+  }
+}
