@@ -88,10 +88,13 @@ async function solver({ pkg, pkgAgent, host, pkgId, res, tag, protocol }: Option
         origin = new URL(`${protocol}://${host}`).origin
     }
 
-    if (!origin) return {
-        status: 400,
-        error: "Bad Request",
-        message: "Unable to fetch registry origin from given headers. Check if this problem solves after updating your package manager and try again."
+    if (!origin) {
+        res.type("application/json").code(400)
+        return {
+            status: 400,
+            error: "Bad Request",
+            message: "Unable to fetch registry origin from given headers. Check if this problem solves after updating your package manager and try again."
+        }
     }
 
     try {
@@ -99,6 +102,7 @@ async function solver({ pkg, pkgAgent, host, pkgId, res, tag, protocol }: Option
 
         return res.redirect(pkgInfo.dist.tarball)
     } catch (e) {
+        res.type("application/json").code(406)
         return {
             status: 406,
             error: "Method Not Allowed",
