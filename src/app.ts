@@ -82,12 +82,6 @@ app.get("/-/tarball/:pkg/:tag", opts(true), async (req, res) => {
 async function solver({ pkg, pkgAgent, host, pkgId, res, tag, protocol }: Options) {
     let origin: string | void = void 0
 
-    if (!pkgAgent) return {
-        status: 400,
-        error: "Bad Request",
-        message: "Only using via [npm|yarn|pnpm] is allowed."
-    }
-
     if (pkgAgent === "npm" && pkgId) {
         origin = new URL(pkgId.split("@").slice(1).join("")).origin
     } else if (host) {
